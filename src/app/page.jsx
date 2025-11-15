@@ -1,5 +1,6 @@
+import Hero from "@/components/Hero/Hero";
 import Image from "next/image";
 
 export default function Home() {
-  return <h1>Coffee Community</h1>;
+  return <Hero />;
 }
