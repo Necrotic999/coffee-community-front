@@ -1,4 +1,4 @@
-import { Jost, K2D, Advent_Pro } from "next/font/google";
+import { Jost, Play, Advent_Pro } from "next/font/google";
 import "./globals.css";
 
 const jost = Jost({
@@ -7,10 +7,10 @@ const jost = Jost({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const k2d = K2D({
+const play = Play({
   variable: "--font-k2d",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "700"],
 });
 
 const adventPro = Advent_Pro({
@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${jost.variable} ${k2d.variable} ${adventPro.variable} antialiased`}
+        className={`${jost.variable} ${play.variable} ${adventPro.variable} antialiased`}
       >
         {children}
       </body>
