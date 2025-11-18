@@ -83,7 +83,7 @@ const Review_sent = () => {
         <button
           className="
             w-full py-3 rounded-lg text-lg font-semibold
-            bg-gradient-to-r from-red-600 to-black
+            bg-gradient-r from-red-600 to-black
             hover:from-red-700 hover:to-gray-900
             transition-all duration-300
           "
