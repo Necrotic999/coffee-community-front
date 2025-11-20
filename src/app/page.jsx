@@ -1,6 +1,5 @@
-import Atmosphere from "@/components/Atmosphere/Atmosphere";
-import Hero from "@/components/Hero/Hero";
+import HomePage from "@/pages/HomePage/HomePage";
 
 export default function Home() {
-  return <Atmosphere />;
+  return <HomePage />;
 }
