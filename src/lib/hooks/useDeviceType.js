@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
 
 const useDeviceType = () => {
-  const getDeviceType = () => {
-    const width = window.innerWidth;
-    return width < 768 ? "mobile" : width < 1440 ? "tablet" : "desktop";
-  };
-
-  const [deviceType, setDeviceType] = useState(
-    typeof window !== "undefined" ? getDeviceType() : "desktop"
-  );
+  const [deviceType, setDeviceType] = useState(null);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    const getDeviceType = () => {
+      const width = window.innerWidth;
+      if (width < 768) return "mobile";
+      if (width < 1440) return "tablet";
+      return "desktop";
+    };
 
-    const handleResize = () => setDeviceType(getDeviceType());
+    const handleResize = () => {
+      setDeviceType(getDeviceType());
+    };
+
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
