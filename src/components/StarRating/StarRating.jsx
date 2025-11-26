@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
-
-
-const StarRating = ({ rating, setRating }) => {
+import { TiStarFullOutline } from "react-icons/ti";
+const StarRating = ({ rating, onRate }) => {
   const [hover, setHover] = useState(0);
 
   return (
@@ -15,15 +14,15 @@ const StarRating = ({ rating, setRating }) => {
             type="button"
             key={starValue}
             className={`text-2xl cursor-pointer transition-colors ${
-              starValue <= (hover || rating) 
+              starValue <= (hover > 0 ? hover : rating) 
                 ? 'text-yellow-400' 
-                : 'text-gray-300'
+                : 'text-[#916767]'
             }`}
-            onClick={() => setRating(starValue)}
+            onClick={() => onRate(starValue)}
             onMouseEnter={() => setHover(starValue)}
             onMouseLeave={() => setHover(0)}
           >
-            {<Image  src="icons/star.svg" alt="star" width={25} height={25} />}
+            <TiStarFullOutline className='w-[35px] h-[35px]'/>
             
           </button>
         );

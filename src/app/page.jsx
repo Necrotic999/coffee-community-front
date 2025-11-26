@@ -1,8 +1,5 @@
-import Hero from "@/components/Hero/Hero";
-import Review from "@/components/Review/Review";
-import ReviewSent from "@/components/Review/ReviewSent";
-import Image from "next/image";
+import HomePage from "@/pages/HomePage/HomePage";
 
 export default function Home() {
-  return <ReviewSent/>;
+  return <HomePage />;
 }

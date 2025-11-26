@@ -1,5 +1,6 @@
 import { Jost, Play, Advent_Pro } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header/Header";
 
 const jost = Jost({
   variable: "--font-jost",
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${jost.variable} ${play.variable} ${adventPro.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
