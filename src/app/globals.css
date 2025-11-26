@@ -153,3 +153,32 @@
 .gradient-underline::after {
   background: linear-gradient(to right, #ff3737, #f28a03);
 }
+
+
+.neon-gradient-review-button {
+  background: linear-gradient(270deg, #BE0000ED, #000000, #BE0000ED);
+  background-size: 200% 400%;
+  transition: background-position 1s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 0 0px transparent;
+}
+
+.neon-gradient-review-button:hover {
+  animation: gradientShift 3s ease infinite;
+  box-shadow: 0 0 3px #BE0000ED, 0 0 5px #000000, 0 0 7px #BE0000ED, 0 0 9px #000000;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-review-underline::after {
+  background: linear-gradient(to right, #BE0000ED, #000000);
+}
