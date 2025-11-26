@@ -76,6 +76,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --font-jost: "Jost", sans-serif;
+  --font-play: "Play", sans-serif;
+  --font-advent: "Advent Pro", sans-serif;
 }
 
 .dark {
@@ -117,6 +120,36 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: #0c0c0c;
+    font-family: var(--font-jost);
+    color: #d9d9d9;
   }
+}
+
+.neon-gradient-button {
+  background: linear-gradient(270deg, #ff3737, #f28a03, #ff3737);
+  background-size: 200% 400%;
+  transition: background-position 1s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 0 0px transparent;
+}
+
+.neon-gradient-button:hover {
+  animation: gradientShift 3s ease infinite;
+  box-shadow: 0 0 3px #ff3737, 0 0 5px #f28a03, 0 0 7px #ff3737, 0 0 9px #f28a03;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-underline::after {
+  background: linear-gradient(to right, #ff3737, #f28a03);
 }
