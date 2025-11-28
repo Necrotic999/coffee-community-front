@@ -69,8 +69,6 @@ const Review = () => {
     return result;
   };
 
-  console.log(slicedArray(reviews));
-
   return (
     <section className="bg-[url('/images/bg_review.png')]  py-12 px-4 md:px-6 min-[1440px]:px-8 h-[700px] min-[1440px]:h-[900px] mb-2.5">
       <h2 className="text-[20px] md:text-4xl min-[1440px]:text-5xl! font-bold mb-4 md:mb-6 min-[1440px]:mb-8 font-advent text-center">
