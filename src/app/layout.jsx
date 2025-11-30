@@ -1,6 +1,7 @@
 import { Jost, Play, Advent_Pro } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import { Toaster } from "sonner";
 
 const jost = Jost({
   variable: "--font-jost",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
+        <Toaster position="top-right" richColors closeButton duration={4000} />
       </body>
     </html>
   );
