@@ -16,10 +16,13 @@ import { Textarea } from "../ui/textarea";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { sendReviewThunk } from "@/redux/reviews/operations";
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const ReviewSent = () => {
+  const dispatch = useDispatch();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const recaptchaRef = useRef(null);
 
@@ -70,12 +73,16 @@ const ReviewSent = () => {
         throw new Error("Токен не згенеровано");
       }
 
-      console.log({
+      const query = {
         name,
         review,
         rating: Math.round((barRating + serviceRating) / 2),
         recaptchaToken: token,
-      });
+      };
+
+      dispatch(sendReviewThunk(query));
+
+      console.log(query);
 
       form.reset();
       recaptchaRef.current.reset();
@@ -88,19 +95,22 @@ const ReviewSent = () => {
 
   return (
     <section className="bg-[url('/images/bg_review_sent.png')] flex items-center justify-center py-12 px-4 flex-col mb-2.5">
-      <h2 className="text-5 md:text-4xl min-[1440px]:text-5xl font-bold text-center mb-6 text-[#D9D9D9] text-[22px] font-advent">
+      <h2 className="text-5 min-[768px]:text-4xl min-[1440px]:text-5xl font-bold text-center mb-6 min-[768]:mb-10 min-[1440px]:mb-[60px] text-[#D9D9D9] text-[22px] font-advent">
         Поділіться своїми враженнями
       </h2>
 
       <Form {...form}>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="flex flex-col md:flex-row md:gap-7">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-6 flex flex-col"
+        >
+          <div className="flex flex-col min-[768px]:flex-row min-[768px]:gap-7">
             <FormField
               control={control}
               name="barRating"
               render={({ field }) => (
-                <div className="flex flex-col bg-[#512424] pt-1 pb-4 mb-4 w-[280px] rounded-[14px] justify-center items-center gap-2.5 outline-none">
-                  <FormLabel className="block text-lg font-medium text-[#D9D9D9]">
+                <div className="flex flex-col bg-[#512424] pt-1 pb-4 mb-4 w-[280px] min-[768px]:w-[300px] min-[1440px]:w-[420px] rounded-[14px] justify-center items-center gap-2.5 outline-none">
+                  <FormLabel className="block text-lg min-[768px]:text-2xl min-[1440px]:text-[32px] font-semibold text-[#D9D9D9]">
                     Бар і десерти
                   </FormLabel>
                   <StarRating
@@ -115,8 +125,8 @@ const ReviewSent = () => {
               control={control}
               name="serviceRating"
               render={({ field }) => (
-                <div className="flex flex-col bg-[#512424] pt-1 pb-4 mb-4 w-[280px] rounded-[14px] justify-center items-center gap-2.5 outline-none">
-                  <FormLabel className="block text-lg font-medium text-[#D9D9D9]">
+                <div className="flex flex-col bg-[#512424] pt-1 pb-4 mb-4 w-[280px] min-[768px]:w-[300px] min-[1440px]:w-[420px]  rounded-[14px] justify-center items-center gap-2.5 outline-none">
+                  <FormLabel className="block text-lg min-[768px]:text-2xl min-[1440px]:text-[32px] font-semibold text-[#D9D9D9]">
                     Сервіс
                   </FormLabel>
                   <StarRating
@@ -133,14 +143,14 @@ const ReviewSent = () => {
             name="name"
             render={({ field }) => (
               <div className="flex flex-col gap-0.5">
-                <FormLabel className="block text-lg font-medium text-[#CECECE] ml-4 text-[14px]">
+                <FormLabel className="block text-lg font-medium text-[#CECECE] ml-4 text-[14px] min-[768px]:text-[16px] min-[1440px]:text-[26px]">
                   Ім`я
                 </FormLabel>
                 <FormControl>
                   <Input
                     type="text"
                     placeholder="Вкажіть ваше ім'я..."
-                    className="w-full px-4 py-2 bg-[#512424] rounded-[14px] text-[#D9D9D9] placeholder:text-[#785C5C] border-none"
+                    className="w-full px-4 py-2 min-[768px]:px-[26px] min-[768px]:py-[18px] min-[1440px]:px-10 min-[1440px]:py-6 bg-[#512424] rounded-[14px] text-[#D9D9D9] placeholder:text-[#785C5C] border-none min-[768px]:h-[50px] min-[1440px]:h-20 text-[10px] min-[768px]:text-[14px]! min-[1440px]:text-[26px]! "
                     {...field}
                   />
                 </FormControl>
@@ -154,14 +164,14 @@ const ReviewSent = () => {
             name="review"
             render={({ field }) => (
               <div className="flex flex-col gap-0.5">
-                <FormLabel className="block font-medium text-[#CECECE] ml-5 text-[14px]">
+                <FormLabel className="block font-medium text-[#CECECE] ml-5 text-[14px] min-[768px]:text-[16px] min-[1440px]:text-[26px]">
                   Що вам більше всього сподобалось?
                 </FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Написати відгук..."
                     rows={4}
-                    className="w-full px-4 py-2 outline-none bg-[#512424] rounded-[14px] resize-none text-[#D9D9D9] placeholder:text-[#785C5C] border-none focus-visible:outline-none"
+                    className="w-full px-4 py-2 min-[768px]:px-[26px] min-[768px]:py-[18px] min-[1440px]:px-10 min-[1440px]:py-6 outline-none bg-[#512424] rounded-[14px] resize-none text-[#D9D9D9] placeholder:text-[#785C5C] text-[10px] min-[768px]:text-[14px]! min-[1440px]:text-[26px]! border-none focus-visible:outline-none min-[768px]:h-[72px] min-[1440px]:h-[152px]"
                     {...field}
                   />
                 </FormControl>
@@ -178,7 +188,7 @@ const ReviewSent = () => {
 
           <button
             type="submit"
-            className="w-full from-[#BE0000] to-[#000000] hover:from-[#D00000] hover:to-[#1a1a1a] text-white font-extrabold text-[20px] py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] neon-gradient-review-button disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full min-[768px]:w-[400px] min-[1440px]:w-[677px] min-[768px]:h-[46px] min-[1440px]:h-[94px] min-[768px]:m-auto from-[#BE0000] to-[#000000] hover:from-[#D00000] hover:to-[#1a1a1a] text-white font-extrabold text-[20px] min-[1440px]:text-4xl py-3 px-4 rounded-[10px] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] neon-gradient-review-button disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer flex justify-center items-center"
           >
             Надіслати відгук
           </button>

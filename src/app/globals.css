@@ -186,3 +186,53 @@
 .grecaptcha-badge {
   visibility: hidden !important;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  color: white !important;
+  top: 58% !important;
+}
+
+.swiper-button-prev {
+  left: -10px !important;
+}
+.swiper-button-next {
+  right: -10px !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .swiper-button-prev {
+    left: -20px !important;
+  }
+  .swiper-button-next {
+    right: -20px !important;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+.swiper-navigation-icon {
+  display: none;
+}
