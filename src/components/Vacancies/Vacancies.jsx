@@ -15,6 +15,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { useDispatch } from 'react-redux';
+import { sendVacancyThunk } from '@/redux/vacancies/operations';
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
@@ -24,6 +26,7 @@ const Vacancies = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const recaptchaRef = useRef(null);
   const deviceType = useDeviceType();
+  const dispatch = useDispatch();
 
   const schema = z.object({
     name: z
@@ -73,12 +76,8 @@ const Vacancies = () => {
         throw new Error("Токен не згенеровано");
       }
 
-      console.log({
-        name,
-        surname,
-        phoneNumber,
-        recaptchaToken: token,
-      });
+      dispatch(sendVacancyThunk({ name, surname, phoneNumber, recaptchaToken: token }));
+      // console.log({ name, surname, phoneNumber, recaptchaToken: token });
 
       form.reset();
       recaptchaRef.current.reset();
