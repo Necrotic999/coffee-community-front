@@ -42,10 +42,10 @@ const Review = () => {
 
   return (
     <section
-      className="bg-[url('/images/bg_review.png')]  py-12 px-4 md:px-6 min-[1440px]:px-8 h-[700px] min-[1440px]:h-[900px] mb-2.5"
+      className="bg-[url('/images/bg_review.png')]  py-12 px-4 min-[768px]:px-6 min-[1440px]:px-8 mb-2.5"
       id="reviews"
     >
-      <h2 className="text-[20px] md:text-4xl min-[1440px]:text-5xl! font-bold mb-4 md:mb-6 min-[1440px]:mb-8 font-advent text-center">
+      <h2 className="text-[20px] min-[768px]:text-4xl min-[1440px]:text-5xl font-bold mb-4 min-[768px]:mb-6 min-[1440px]:mb-8 font-advent text-center">
         Що про нас говорять наші клієнти
       </h2>
       {loading ? (
@@ -53,44 +53,44 @@ const Review = () => {
       ) : (
         <Swiper
           modules={[Navigation]}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
+          navigation={true}
           slidesPerView={1}
           onSwiper={(swiper) => {
             if (swiper.params.navigation) {
               swiper.params.navigation.prevEl = prevRef.current;
               swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
               swiper.navigation.update();
             }
           }}
         >
-          <IoIosArrowBack
+          <button
             ref={prevRef}
-            className="fill-white h-8 w-8 md:w-16 md:h-16 min-[1440px]:w-20! min-[1440px]:h-20! swiper-button-prev -left-3.5!"
-          />
+            className="swiper-button-prev custom-prev top-[58%]"
+          >
+            <IoIosArrowBack className="h-8 w-8" />
+          </button>
           {slicedArray(reviews).map((group, idx) => (
             <SwiperSlide key={idx}>
-              <div className="flex flex-col gap-[35px] md:gap-5 justify-center items-center md:flex-row md:flex-wrap md:w-[646px] min-[1440px]:w-[1072px]! md:m-auto min-h-[391px] md:min-h-[488px] min-[1440px]:min-h-[696px]!">
+              <div className="flex flex-col gap-[35px] min-[768px]:gap-5 justify-center items-center min-[768px]:flex-row min-[768px]:flex-wrap min-[768px]:w-[646px] min-[1440px]:w-[1072px] min-[768px]:m-auto min-[1440px]:gap-[100px]">
                 {group.map(({ _id, name, rating, review }) => {
                   return (
                     <div
-                      className="bg-[#252424] rounded-lg p-5 min-[1440px]:p-8! w-[284px] max-[375px]:w-[230px] md:w-[313px] min-[1440px]:w-[476px]! "
+                      className="bg-[#252424] rounded-lg p-5 min-[1440px]:p-8 w-[284px] max-[375px]:w-[230px] min-[768px]:w-[313px] min-[1440px]:w-[476px] "
                       key={_id}
                     >
-                      <h3 className="text-xl md:text-2xl min-[1440px]:text-3xl! font-semibold mb-1 min-[1440px]:mb-2!">
+                      <h3 className="text-xl min-[768px]:text-2xl min-[1440px]:text-3xl font-semibold mb-1 min-[1440px]:mb-2">
                         {name}
                       </h3>
                       <div className="flex mb-3 gap-1">
                         {Array.from({ length: rating }).map((_, i) => (
                           <TiStarFullOutline
                             key={i}
-                            className="w-5 h-5 md:w-[30px] md:h-[30px] min-[1440px]:w-[46px]! min-[1440px]:h-[46px]! text-yellow-400"
+                            className="w-5 h-5 min-[768px]:w-[30px] min-[768px]:h-[30px] min-[1440px]:w-[46px] min-[1440px]:h-[46px] text-yellow-400"
                           />
                         ))}
                       </div>
-                      <p className="text-[12px] md:text-[16px] min-[1440px]:text-[26px]!">
+                      <p className="text-[12px] min-[768px]:text-[16px] min-[1440px]:text-[26px]">
                         {review}
                       </p>
                     </div>
@@ -99,10 +99,9 @@ const Review = () => {
               </div>
             </SwiperSlide>
           ))}
-          <IoIosArrowBack
-            ref={prevRef}
-            className="fill-white h-8 w-8 md:w-16 md:h-16 min-[1440px]:w-20! min-[1440px]:h-20! rotate-180 swiper-button-next relative -right-3.5!"
-          />
+          <button ref={nextRef} className="swiper-button-next custom-next">
+            <IoIosArrowBack className="h-8 w-8 rotate-180" />
+          </button>
         </Swiper>
       )}
     </section>
