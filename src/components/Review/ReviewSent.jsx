@@ -16,10 +16,13 @@ import { Textarea } from "../ui/textarea";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { sendReviewThunk } from "@/redux/reviews/operations";
 
 const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
 const ReviewSent = () => {
+  const dispatch = useDispatch();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const recaptchaRef = useRef(null);
 
@@ -70,12 +73,16 @@ const ReviewSent = () => {
         throw new Error("Токен не згенеровано");
       }
 
-      console.log({
+      const query = {
         name,
         review,
         rating: Math.round((barRating + serviceRating) / 2),
         recaptchaToken: token,
-      });
+      };
+
+      dispatch(sendReviewThunk(query));
+
+      console.log(query);
 
       form.reset();
       recaptchaRef.current.reset();
@@ -178,7 +185,7 @@ const ReviewSent = () => {
 
           <button
             type="submit"
-            className="w-full from-[#BE0000] to-[#000000] hover:from-[#D00000] hover:to-[#1a1a1a] text-white font-extrabold text-[20px] py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] neon-gradient-review-button disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full from-[#BE0000] to-[#000000] hover:from-[#D00000] hover:to-[#1a1a1a] text-white font-extrabold text-[20px] py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] neon-gradient-review-button disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer"
           >
             Надіслати відгук
           </button>
