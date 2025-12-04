@@ -58,35 +58,42 @@ const Vacancies = () => {
 
   const { control, handleSubmit } = form;
 
-  const onSubmit = async ({ name, surname, phoneNumber }) => {
-    if (isSubmitting) return;
+  
+const onSubmit = async (values) => {
+  if (isSubmitting) return;
+  setIsSubmitting(true);
 
-    setIsSubmitting(true);
+  try {
+    const token = await recaptchaRef.current?.executeAsync();
+    if (!token) throw new Error("reCAPTCHA не спрацювала");
 
-    try {
-      if (!recaptchaRef.current) {
-        throw new Error("reCAPTCHA не ініціалізовано");
-      }
+    recaptchaRef.current?.reset(); 
 
-      const token = await recaptchaRef.current.executeAsync();
+   
+    const result = await dispatch(
+      sendVacancyThunk({
+        name: values.name,
+        surname: values.surname,
+        phoneNumber: values.phoneNumber,
+        recaptchaToken: token,
+      })
+    ).unwrap(); 
 
-      toast.success("Дані успішно надіслано!");
+    
+    toast.success("Дякуємо! Ми зв’яжемося з вами найближчим часом");
+    form.reset();
+  } catch (err) {
+    console.error(err);
+    const message =
+      err?.message || 
+      err?.data?.message || 
+      "Не вдалося надіслати заявку. Спробуйте ще раз";
 
-      if (!token) {
-        throw new Error("Токен не згенеровано");
-      }
-
-      dispatch(sendVacancyThunk({ name, surname, phoneNumber, recaptchaToken: token }));
-      // console.log({ name, surname, phoneNumber, recaptchaToken: token });
-
-      form.reset();
-      recaptchaRef.current.reset();
-    } catch (err) {
-      console.error("reCAPTCHA помилка:", err);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    toast.error(message);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   return (
     <section className='px-4 mb-50px min-[768px]:mb-[80px] min-[1440px]:mb-[130px]'>
     <div className='w-full h-[60px] bg-[#FF0000] blur-3xl z-0 relative top-0 left-0 min-[768px]:h-[168px] min-[768px]:-top-20 min-[768px]:blur-[150px] min-[768px]:left-0 '/>
@@ -135,7 +142,7 @@ const Vacancies = () => {
             control={control}
             name="name"
             render={({ field }) => (
-              <div className="flex flex-col gap-0.5 items-center ">
+              <div className="flex flex-col items-center mb-2.5 min-[768px]:mb-[18px] min-[1440px]:mb-[34px]">
                 <FormControl>
                   <Input
                     type="text"
@@ -153,7 +160,7 @@ const Vacancies = () => {
             control={control}
             name="surname"
             render={({ field }) => (
-              <div className="flex flex-col gap-0.5 items-center ">
+              <div className="flex flex-col items-center mb-2.5 min-[768px]:mb-[18px] min-[1440px]:mb-[34px]">
                 <FormControl>
                   <Input
                     type="text"

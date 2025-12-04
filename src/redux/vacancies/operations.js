@@ -8,7 +8,9 @@ export const sendVacancyThunk = createAsyncThunk(
       const { data } = await coffeeComApi.post("/api/vacancies", credentials);
       return data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(
+        error.response?.data?.message || error.message || "Server error"
+      );
     }
   }
 );
