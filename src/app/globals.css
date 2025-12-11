@@ -153,3 +153,86 @@
 .gradient-underline::after {
   background: linear-gradient(to right, #ff3737, #f28a03);
 }
+
+.neon-gradient-review-button {
+  background: linear-gradient(270deg, #be0000ed, #000000, #be0000ed);
+  background-size: 200% 400%;
+  transition: background-position 1s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 0 0px transparent;
+}
+
+.neon-gradient-review-button:hover {
+  animation: gradientShift 3s ease infinite;
+  box-shadow: 0 0 3px #be0000ed, 0 0 5px #000000, 0 0 7px #be0000ed,
+    0 0 9px #000000;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-review-underline::after {
+  background: linear-gradient(to right, #be0000ed, #000000);
+}
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  cursor: pointer;
+  position: absolute;
+  z-index: 10;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  color: white !important;
+  top: 58% !important;
+}
+
+.swiper-button-prev {
+  left: -10px !important;
+}
+.swiper-button-next {
+  right: -10px !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  .swiper-button-prev {
+    left: -20px !important;
+  }
+  .swiper-button-next {
+    right: -20px !important;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+.swiper-navigation-icon {
+  display: none;
+}

@@ -1,6 +1,11 @@
+"use client";
+
 import { Jost, Play, Advent_Pro } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import { Toaster } from "sonner";
+import { Provider } from "react-redux";
+import { store } from "@/redux/store";
 
 const jost = Jost({
   variable: "--font-jost",
@@ -26,8 +31,16 @@ export default function RootLayout({ children }) {
       <body
         className={`${jost.variable} ${play.variable} ${adventPro.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <Provider store={store}>
+          <Header />
+          {children}
+          <Toaster
+            position="top-right"
+            richColors
+            closeButton
+            duration={4000}
+          />
+        </Provider>
       </body>
     </html>
   );
