@@ -21,7 +21,7 @@ const Atmosphere = () => {
         <div className='flex gap-1 w-full '>
         <Image src='/images/sixth@3x.png' alt='' width={321} height={210} sizes='100vw' className='w-full'/>
 
-        {deviceType === 'tablet' || deviceType === 'desktop' ? <Image src='/images/Gallery.png' alt='' width={328} height={438} sizes='100vw' className='w-full' /> : ''}
+        {deviceType === 'tablet' || deviceType === 'desktop' ? <Image src='/images/Gallery@3x.png' alt='' width={328} height={438} sizes='100vw' className='w-full' /> : ''}
         </div>
       </div>
 
