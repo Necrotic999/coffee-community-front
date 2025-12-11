@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <>
       <header className="absolute w-full bg-black/40 rounded-b-xl h-[60px] min-[768px]:h-[88px] min-[1440px]:h-[110px] pt-1.5 mb-6 z-10">
-        <div
+        <nav
           className={`grid gap-[7px] min-[768px]:gap-[15px] min-[1440px]:gap-[26px] items-center justify-items-center ${
             columns === 3
               ? "grid-cols-3"
@@ -34,7 +34,7 @@ const Header = () => {
           </Link>
           {deviceType === "desktop" ? (
             <>
-              <Link href="#" className={`${linkStyles} col-start-3`}>
+              <Link href="/aboutUs" className={`${linkStyles} col-start-3`}>
                 Про нас
               </Link>
               <Link href="#" className={linkStyles}>
@@ -60,7 +60,7 @@ const Header = () => {
           ) : (
             ""
           )}
-        </div>
+        </nav>
       </header>
       {isOpen && (
         <div
