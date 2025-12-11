@@ -11,17 +11,17 @@ const Atmosphere = () => {
         Наша атмосфера
       </h2>
       <div className='flex flex-col justify-center items-center gap-1  '>
-        <Image src='/images/first_pic.png' alt='' width={321} height={210} className='min-[768px]:w-[666px] min-[768px]:h-[434px]' /> 
-        <div className='flex gap-1 '>
-          <Image src='/images/second_pic.png' alt='' width={160} height={175} className='min-[768px]:w-[333px] min-[768px]:h-[370px]'/>
-          <Image src='/images/third_pic.png' alt='' width={157} height={175} className='min-[768px]:w-[331px] min-[768px]:h-[370px]'/>
+        <Image src='/images/first@3x.png' alt='' width={321} height={210} sizes='100vw' className='w-full max-w-[1440px]' /> 
+        <div className='flex gap-1 w-full '>
+          <Image src='/images/second@3x.png' alt='' width={160} height={175} sizes='100vw' className='w-full '/>
+          <Image src='/images/third@3x.png' alt='' width={157} height={175} sizes='100vw' className='w-full'/>
         </div>
-        <Image src='/images/fourth_pic.png' alt='' width={321} height={210} className='min-[768px]:w-[667px] min-[768px]:h-[448px]'/>
-        <Image src='/images/fifth_pic.png' alt='' width={321} height={210} className='min-[768px]:w-[666px] min-[768px]:h-[463px]'/>
-        <div className='flex gap-1 '>
-        <Image src='/images/sixth_pic.png' alt='' width={321} height={210} className='min-[768px]:w-[329px] min-[768px]:h-[438px]'/>
+        <Image src='/images/fourth@3x.png' alt='' width={321} height={210} sizes='100vw' className='w-full'/>
+        <Image src='/images/fifth@3x.png' alt='' width={321} height={210} sizes='100vw' className='w-full'/>
+        <div className='flex gap-1 w-full '>
+        <Image src='/images/sixth@3x.png' alt='' width={321} height={210} sizes='100vw' className='w-full'/>
 
-        {deviceType === 'tablet' || deviceType === 'desktop' ? <Image src='/images/Gallery.png' alt='' width={328} height={438} className='min-[768px]:w-[328px] min-[768px]:h-[438px] ' /> : ''}
+        {deviceType === 'tablet' || deviceType === 'desktop' ? <Image src='/images/Gallery.png' alt='' width={328} height={438} sizes='100vw' className='w-full' /> : ''}
         </div>
       </div>
 
