@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const coffeeComApi = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://coffee-community-back.onrender.com",
 });
