@@ -42,7 +42,7 @@ const Review = () => {
 
   return (
     <section
-      className="bg-[url('/images/bg_review.png')]  py-12 px-4 min-[768px]:px-6 min-[1440px]:px-8 mb-2.5"
+      className="py-12 px-4 min-[768px]:px-6 min-[1440px]:px-8 mb-2.5"
       id="reviews"
     >
       <h2 className="text-[20px] min-[768px]:text-4xl min-[1440px]:text-5xl font-bold mb-4 min-[768px]:mb-6 min-[1440px]:mb-8 font-advent text-center">
