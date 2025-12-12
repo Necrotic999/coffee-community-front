@@ -32,7 +32,7 @@ const BurgerMenu = ({ isOpen, setIsOpen }) => {
             </Link>
           </li>
           <li>
-            <Link href="#" className={linkStyles}>
+            <Link href="/menu" className={linkStyles}>
               Меню
             </Link>
           </li>
