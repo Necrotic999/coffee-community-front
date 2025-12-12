@@ -94,7 +94,7 @@ const ReviewSent = () => {
   };
 
   return (
-    <section className="bg-[url('/images/bg_review_sent.png')] flex items-center justify-center py-12 px-4 flex-col mb-2.5">
+    <section className="flex items-center justify-center py-12 px-4 flex-col mb-2.5">
       <h2 className="text-5 min-[768px]:text-4xl min-[1440px]:text-5xl font-bold text-center mb-6 min-[768]:mb-10 min-[1440px]:mb-[60px] text-[#D9D9D9] text-[22px] font-advent">
         Поділіться своїми враженнями
       </h2>
