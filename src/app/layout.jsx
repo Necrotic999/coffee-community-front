@@ -6,6 +6,7 @@ import Header from "@/components/Header/Header";
 import { Toaster } from "sonner";
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
+import Footer from "@/components/Footer/Footer";
 
 const jost = Jost({
   variable: "--font-jost",
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
             closeButton
             duration={4000}
           />
+          <Footer />
         </Provider>
       </body>
     </html>
