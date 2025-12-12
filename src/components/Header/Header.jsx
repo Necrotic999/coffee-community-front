@@ -43,7 +43,7 @@ const Header = () => {
               <Link href="/vacancies" className={linkStyles}>
                 Вакансії
               </Link>
-              <Link href="#" className={linkStyles}>
+              <Link href="/#reviews" className={linkStyles}>
                 Відгуки
               </Link>
             </>

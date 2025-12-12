@@ -15,9 +15,9 @@ import { SiGooglemaps } from "react-icons/si";
 
 const Footer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentDayIndex, setCurrentDayIndex] = useState(0);
-  const [currentDayName, setCurrentDayName] = useState("Понеділок");
-  const deviceType = useDeviceType();
+
+  const today = new Date().getDay();
+  const dayIndex = today === 0 ? 6 : today - 1;
 
   const workingHours = [
     { day: "Понеділок", hours: "09:00 - 21:00" },
@@ -29,24 +29,17 @@ const Footer = () => {
     { day: "Неділя", hours: "10:00 - 22:00" },
   ];
 
+  const [currentDayIndex, setCurrentDayIndex] = useState(dayIndex);
+  const [currentDayName, setCurrentDayName] = useState(
+    workingHours[dayIndex].day
+  );
+  const deviceType = useDeviceType();
+
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       setIsOpen(!isOpen);
     }
   };
-
-  useEffect(() => {
-    const today = new Date().getDay();
-    let dayIndex;
-    if (today === 0) {
-      dayIndex = 6;
-    } else {
-      dayIndex = today - 1;
-    }
-
-    setCurrentDayIndex(dayIndex);
-    setCurrentDayName(workingHours[dayIndex].day);
-  }, []);
 
   return (
     <footer onClick={handleBackdropClick} className="relative z-20">
@@ -58,7 +51,7 @@ const Footer = () => {
             </h2>
             <Link
               href="tel:+380962387754"
-              className=" text-[13px] min-[768px]:text-lg min-[1440px]:text-3xl"
+              className=" text-[13px] min-[768px]:text-lg min-[1440px]:text-2xl"
             >
               +380962387754
             </Link>

@@ -21,28 +21,48 @@ const BurgerMenu = ({ isOpen, setIsOpen }) => {
       >
         <MdKeyboardArrowLeft className="fill-[#D9D9D9] w-[30px] h-[30px] " />
       </button>
-      <h3 className="text-center text-[#D9D9D9] font-bold text-[18px] font-[Play] max-[375px]:mb-10 mb-[60px]">
+      <Link
+        href="/"
+        className="text-[#D9D9D9] font-bold text-[18px] font-[Play] max-[375px]:mb-10 mb-[30px] flex justify-center"
+        onClick={() => setIsOpen(false)}
+      >
         Coffee community
-      </h3>
+      </Link>
       <div className="px-10 max-[375px]:px-8 md:px-[30px] max-[375px]:mb-20 mb-5 md:mb-25">
         <ul className="flex flex-col max-[375px]:gap-4 gap-5 max-[375px]:mb-5 mb-[30px]">
           <li>
-            <Link href="#" className={linkStyles}>
+            <Link
+              href="/aboutUs"
+              className={linkStyles}
+              onClick={() => setIsOpen(false)}
+            >
               Про нас
             </Link>
           </li>
           <li>
-            <Link href="/menu" className={linkStyles}>
+            <Link
+              href="/menu"
+              className={linkStyles}
+              onClick={() => setIsOpen(false)}
+            >
               Меню
             </Link>
           </li>
           <li>
-            <Link href="#" className={linkStyles}>
+            <Link
+              href="/vacancies"
+              className={linkStyles}
+              onClick={() => setIsOpen(false)}
+            >
               Вакансії
             </Link>
           </li>
           <li>
-            <Link href="#" className={linkStyles}>
+            <Link
+              href="/#reviews"
+              className={linkStyles}
+              onClick={() => setIsOpen(false)}
+            >
               Відгуки
             </Link>
           </li>

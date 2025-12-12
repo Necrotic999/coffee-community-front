@@ -203,6 +203,13 @@
   top: 58% !important;
 }
 
+@media only screen and (min-width: 1440px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 54% !important;
+  }
+}
+
 .swiper-button-prev {
   left: -10px !important;
 }
