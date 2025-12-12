@@ -37,7 +37,7 @@ const Header = () => {
               <Link href="/aboutUs" className={`${linkStyles} col-start-3`}>
                 Про нас
               </Link>
-              <Link href="#" className={linkStyles}>
+              <Link href="/menu" className={linkStyles}>
                 Меню
               </Link>
               <Link href="#" className={linkStyles}>
