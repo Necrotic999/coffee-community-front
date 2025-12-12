@@ -29,7 +29,7 @@ const Header = () => {
               : "grid-cols-6"
           }`}
         >
-          <Link href="#" className={linkStyles}>
+          <Link href="/" className={linkStyles}>
             Coffee Community
           </Link>
           {deviceType === "desktop" ? (
@@ -40,7 +40,7 @@ const Header = () => {
               <Link href="/menu" className={linkStyles}>
                 Меню
               </Link>
-              <Link href="#" className={linkStyles}>
+              <Link href="/vacancies" className={linkStyles}>
                 Вакансії
               </Link>
               <Link href="#" className={linkStyles}>
