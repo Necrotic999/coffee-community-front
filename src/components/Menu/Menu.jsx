@@ -17,7 +17,7 @@ const Menu = () => {
   }, [dispatch]);
   return (
     <>
-      <div className="absolute top-0 left-0 h-[150px] bg-[#ff0000] w-full blur-2xl opacity-30" />
+      <div className="absolute top-0 left-0 h-[150px] min-[768px]:h-[220px] min-[1440px]:h-[370px] bg-[#ff0000] w-full blur-2xl min-[768px]:blur-3xl min-[1440px]:blur-[100px] opacity-30" />
       <section className="relative pt-20 min-[768px]:pt-28 min-[1440px]:pt-42 px-[18px] min-[1440px]:px-[130px] mb-8">
         <div className="flex gap-5 min-[768px]:gap-16 min-[1440px]:gap-56 justify-center items-center mb-4 min-[768px]:mb-6 min-[1440px]:mb-24">
           <button
